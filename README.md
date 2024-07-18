@@ -297,3 +297,80 @@ The `ProductEntryForm` class sets up a graphical user interface for entering new
 3. **Exception Handling**:
    - Catches and prints any exceptions that occur during database operations or GUI setup to aid in debugging.
 ___________________________________________________________________________________________________________________________________
+
+MySQL
+
+
+
+#### Concept and Modules Overview
+
+This database named `zoho` manages various aspects of a business operation, including billing, customer details, product management, and time tracking. Below is a breakdown of each table and its attributes:
+
+---
+
+#### Table: `bill_details`
+
+**Attributes:**
+- `Invoice_number` (int): Primary key, uniquely identifies each invoice.
+- `Item` (varchar(150)) : Name of the item(s) in the invoice.
+- `Quantity` (varchar(50)): Quantity of each item in the invoice.
+- `Cid` (int): Foreign key referencing `cid` in `customer_details`.
+- `Price` (float): Price of each item.
+- `Payment_Status` (char(1)): Payment status ('P' for paid, 'U' for unpaid).
+
+---
+
+#### Table: `billing`
+
+**Attributes:**
+- `pid` (int): Primary key, uniquely identifies each entry.
+- `quantity_purchased` (float): Quantity of products purchased.
+
+---
+
+#### Table: `customer_details`
+
+**Attributes:**
+- `cid` (int): Primary key, uniquely identifies each customer.
+- `name` (char(20)): Name of the customer.
+- `phone_no` (char(20)): Phone number of the customer.
+
+---
+
+#### Table: `product_details`
+
+**Attributes:**
+- `pid` (int): Primary key, uniquely identifies each product.
+- `product_name` (varchar(20)): Name of the product.
+- `quantity_sold` (float): Total quantity sold of the product.
+- `price_per_unit` (float): Price per unit of the product.
+- `stock_available` (float): Quantity of the product available in stock.
+
+---
+
+#### Table: `time`
+
+**Attributes:**
+- `inv` (int): Foreign key referencing `Invoice_number` in `bill_details`.
+- `time` (varchar(30)): Time associated with the invoice.
+
+---
+
+### Explanation
+
+Each table in the `zoho` database serves a specific purpose:
+
+- **`bill_details`**: Stores detailed information about invoices, including items purchased, quantities, prices, customer ID, and payment status.
+  
+- **`billing`**: Tracks the quantity of products purchased, linked to product IDs (`pid`).
+  
+- **`customer_details`**: Holds customer information such as name and phone number, uniquely identified by `cid`.
+  
+- **`product_details`**: Manages product data including names, quantities sold, prices, and available stock levels, uniquely identified by `pid`.
+  
+- **`time`**: Records time-related data associated with invoices, linked to `Invoice_number` in `bill_details`.
+
+### Conclusion
+
+This database structure supports efficient management of billing, customer relations, and inventory control. Each table's attributes are designed to facilitate accurate data storage and retrieval, ensuring operational transparency and reliability.
+___________________________________________________________________________________________________________________________________
